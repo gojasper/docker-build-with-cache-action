@@ -1,6 +1,6 @@
 name: Build docker images using cache
 description: Use registry to pull/push cache for an image (stages included)
-author: whoan
+author: gojasper
 
 inputs:
 

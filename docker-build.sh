@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# https://hub.docker.com/r/amazon/aws-cli/tags
+AWS_CLI_VERSION=2.6.2 
+
 set -e
 
 # helper functions
@@ -165,7 +168,7 @@ _aws() {
     --env AWS_ACCESS_KEY_ID="$INPUT_USERNAME" \
     --env AWS_SECRET_ACCESS_KEY="$INPUT_PASSWORD" \
     --env AWS_SESSION_TOKEN="$INPUT_SESSION" \
-    amazon/aws-cli:2.1.14 --region "$(_get_aws_region)" "$@"
+    amazon/aws-cli:${AWS_CLI_VERSION} --region "$(_get_aws_region)" "$@"
 }
 
 _aws_get_public_ecr_registry_name() {

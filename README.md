@@ -67,7 +67,7 @@ or
 ## Outputs
 
 - **FULL_IMAGE_NAME**: Full name of the Docker Image with the Registry (if provided) and Namespace included.  
-e.g.: `docker.pkg.github.com/whoan/hello-world/hello-world`
+e.g.: `docker.pkg.github.com/gojasper/hello-world/hello-world`
 
 ## How it works
 
@@ -82,16 +82,16 @@ The action does the following every time it is triggered:
 
 ## Examples
 
-Find working minimal examples for the most known registries in [this repo](https://github.com/whoan/hello-world/tree/master/.github/workflows).
+Find working minimal examples for the most known registries in [this repo](https://github.com/gojasper/hello-world/tree/master/.github/workflows).
 
 ### Docker Hub
 
 > If you don't specify a registry, Docker Hub is the default one
 
 ```yml
-- uses: whoan/docker-build-with-cache-action@v5
+- uses: gojasper/docker-build-with-cache-action@v5
   with:
-    username: whoan
+    username: gojasper
     password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
     image_name: hello-world
 ```
@@ -103,9 +103,9 @@ Find working minimal examples for the most known registries in [this repo](https
 > If you push the image to a **public** repository's GitHub Registry, please be aware that it will be impossible to delete it because of GitHub's policy (see [Deleting a package](https://help.github.com/en/packages/publishing-and-managing-packages/deleting-a-package)).
 
 ```yml
-- uses: whoan/docker-build-with-cache-action@v5
+- uses: gojasper/docker-build-with-cache-action@v5
   with:
-    username: whoan
+    username: gojasper
     password: "${{ secrets.GITHUB_TOKEN }}"
     registry: docker.pkg.github.com
     #or
@@ -118,7 +118,7 @@ Find working minimal examples for the most known registries in [this repo](https
 > More info [here](https://cloud.google.com/container-registry/docs/advanced-authentication#json-key) on how to get GCloud JSON key.
 
 ```yml
-- uses: whoan/docker-build-with-cache-action@v5
+- uses: gojasper/docker-build-with-cache-action@v5
   with:
     username: _json_key
     password: "${{ secrets.GCLOUD_JSON_KEY }}"
@@ -131,7 +131,7 @@ Find working minimal examples for the most known registries in [this repo](https
 > You don't even need to create the repositories in advance, as this action takes care of that for you!
 
 ```yml
-- uses: whoan/docker-build-with-cache-action@v5
+- uses: gojasper/docker-build-with-cache-action@v5
   with:
     username: "${{ secrets.AWS_ACCESS_KEY_ID }}"  # no need to provide it if you already logged in with aws-actions/configure-aws-credentials
     password: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"  # no need to provide it if you already logged in with aws-actions/configure-aws-credentials
@@ -148,17 +148,17 @@ Find working minimal examples for the most known registries in [this repo](https
 > Images to build are detected `grep`ping the registry (if provided) in the compose file. If no registry is provided, DockerHub is assumed and images with format `<username>/<image>[:<tag>]` are `grep`ped.
 
 ```yml
-- uses: whoan/docker-build-with-cache-action@v5
+- uses: gojasper/docker-build-with-cache-action@v5
   with:
-    username: whoan
+    username: gojasper
     password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
     compose_file: docker-compose.yml
 ```
 
 ```yml
-- uses: whoan/docker-build-with-cache-action@v5
+- uses: gojasper/docker-build-with-cache-action@v5
   with:
-    username: whoan
+    username: gojasper
     password: "${{ secrets.GITHUB_TOKEN }}"
     registry: docker.pkg.github.com
     compose_file: docker-compose.yml
@@ -167,9 +167,9 @@ Find working minimal examples for the most known registries in [this repo](https
 With a compose file override:
 
 ```yml
-- uses: whoan/docker-build-with-cache-action@v5
+- uses: gojasper/docker-build-with-cache-action@v5
   with:
-    username: whoan
+    username: gojasper
     password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
     compose_file: docker-compose.yml > docker-compose.override.yml
 ```
@@ -177,11 +177,11 @@ With a compose file override:
 ### Example with more options
 
 ```yml
-- uses: whoan/docker-build-with-cache-action@v5
+- uses: gojasper/docker-build-with-cache-action@v5
   with:
-    username: whoan
+    username: gojasper
     password: "${{ secrets.GITHUB_TOKEN }}"
-    image_name: whoan/docker-images/node
+    image_name: gojasper/docker-images/node
     image_tag: alpine-slim,another-tag,latest
     push_git_tag: true
     registry: docker.pkg.github.com
@@ -199,8 +199,8 @@ With a compose file override:
 
 ## Tests
 
-The tests for this action are run in a [separate repo](https://github.com/whoan/hello-world) as I need to set credentials for each registry with GitHub secrets and doing so in this repo is not practical.
+The tests for this action are run in a [separate repo](https://github.com/gojasper/hello-world) as I need to set credentials for each registry with GitHub secrets and doing so in this repo is not practical.
 
 ## License
 
-[MIT](https://github.com/whoan/docker-build-with-cache-action/blob/master/LICENSE)
+[MIT](https://github.com/gojasper/docker-build-with-cache-action/blob/master/LICENSE)
